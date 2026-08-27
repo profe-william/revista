@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Revista digital académica sobre Necesidades Educativas y apoyos educativos, con tres artículos y propuestas de adecuación curricular.">
+<title>Educa sin Barreras | Revista Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#ffffff;--panel:#0e1a2b;--panel2:#12233a;--cyan:#38bdf8;--purple:#c084fc;
+ --pink:#f472b6;--text:#f8fafc;--muted:#94a3b8;--line:#1e293b;--base:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+/* FONDO EXTERNO BLANCO Y ESTRELLAS BICOLORES AMPLIADAS UN 400% (320px) */
+body{margin:0;background:#ffffff;
+color:#111827;font-family:Comfortaa,Arial,sans-serif;font-size:var(--base);line-height:1.72;position:relative;overflow-x:hidden;}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(#0284c7 6px, transparent 6px), radial-gradient(#7e22ce 6px, transparent 6px);
+  background-size: 320px 320px;
+  background-position: 0 0, 160px 160px;
+  opacity: 0.35;
+  animation: moveStars 60s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes moveStars {
+  from { background-position: 0 0, 160px 160px; }
+  to { background-position: 1280px 1280px, 1440px 1440px; }
+}
+
+/* PALABRAS PAULATINAS EN LA PARTE EXTERNA */
+.external-ticker {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px 0 4px 0;
+  min-height: 30px;
+  text-shadow: none;
+}
+
+button{font:inherit}
+.skip{position:absolute;left:-9999px;top:8px;background:#000;color:#fff;padding:10px;z-index:9999}
+.skip:focus{left:8px}
+.site{min-height:100vh;padding:10px 12px 90px}
+
+/* MARCO Y RELLENO EN AZUL MARINO */
+.magazine{max-width:980px;height:860px;margin:auto;background:linear-gradient(145deg,#0a192f,#020617);
+border:2px solid #1e3a8a;border-radius:18px;box-shadow:0 25px 50px rgba(0,0,0,0.3);position:relative;overflow:hidden;display:flex;flex-direction:column;color:var(--text)}
+
+/* ENCABEZADO CON FECHA DEBAJO DEL TÍTULO */
+.header{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:14px 24px;border-bottom:1px solid #1e3a8a;background:#0a192fee;flex-shrink:0}
+.brand-container {display:flex;align-items:center;gap:14px;}
+.brand-text-box {display:flex;flex-direction:column;}
+.brand{font-size: 1.15rem; font-weight:700;color: #38bdf8;letter-spacing:.5px;}
+.header-date{font-size: 0.78rem; color: #94a3b8; font-weight: 600; margin-top: 2px; letter-spacing: 0.5px;}
+.header-avatar {width:76px;height:76px;object-fit:contain;border-radius:50%;border:1px solid var(--cyan);background:#0f172a;padding:2px;}
+.pagecount{font-size:.78rem;color:var(--cyan);border:1px solid #38bdf866;padding:5px 11px;border-radius:20px;white-space:nowrap;}
+
+/* CONTENEDOR INTERNO */
+.content{padding:28px 48px;flex-grow:1;overflow-y:auto;scroll-behavior:smooth}
+.content::-webkit-scrollbar{width:8px}
+.content::-webkit-scrollbar-track{background:#020617}
+.content::-webkit-scrollbar-thumb{background:#1e3a8a;border-radius:4px}
+.content::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
+
+h1,h2,h3{color:var(--cyan);line-height:1.3;margin:0 0 16px}
+h1{font-size:2.1rem;text-align:center;color:#38bdf8}
+h2{font-size:1.65rem;border-bottom:1px solid #38bdf833;padding-bottom:10px}
+h3{font-size:1.15rem;color:#c084fc}
+p{margin:0 0 14px;text-align:justify;color:#e2e8f0}
+strong{color:#ffffff}
+.subtitle{text-align:center;color:#94a3b8;font-weight:600;margin-bottom:22px}
+.cover-img,.hero-img{display:block;width:100%;max-height:260px;object-fit:contain;background:#ffffff08;border-radius:14px;border:1px solid #38bdf833;margin:18px auto;padding:6px}
+.gif-img{display:block;width:min(100%,320px);max-height:210px;object-fit:contain;margin:15px auto;border-radius:14px;border:1px solid #c084fc33;background:#ffffff08;padding:6px}
+.two{display:grid;grid-template-columns:1fr 1px 1fr;gap:26px;margin-top:18px}
+.divider{background:linear-gradient(#0000,#38bdf866,#c084fc66,#0000)}
+.card{background:#0f172a;border:1px solid #1e3a8a;border-radius:13px;padding:18px;margin:14px 0;box-shadow:0 4px 6px rgba(0,0,0,0.2)}
+.callout{border-left:4px solid var(--cyan);background:#0284c715;padding:15px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout strong{color:var(--pink)}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:7px 18px}
+.meta b{color:var(--cyan)}
+.meta span{color:#e2e8f0}
+.contents{list-style:none;padding:0;margin:0}
+.contents li{margin:8px 0}
+.contents button{width:100%;text-align:left;background:transparent;color:#c084fc;border:0;border-bottom:1px dashed #1e3a8a;padding:9px 2px;cursor:pointer}
+.contents button:hover,.contents button:focus{color:var(--cyan)}
+.article-tag{display:inline-block;font-size:.78rem;font-weight:700;color:#fff;background:var(--cyan);padding:4px 10px;border-radius:20px;margin-bottom:10px}
+.ref{font-size:.86rem;color:var(--muted);padding:9px 0 9px 13px;border-left:2px solid var(--purple);margin-bottom:10px}
+ul{padding-left:24px}
+li{margin-bottom:7px;color:#e2e8f0}
+table{width:100%;border-collapse:collapse;margin:15px 0;font-size:.9rem}
+th,td{border:1px solid #1e3a8a;padding:10px;vertical-align:top;text-align:left;color:#e2e8f0}
+th{color:var(--cyan);background:#0f172a}
+.small{font-size:.86rem;color:var(--muted)}
+
+/* NAVEGACIÓN INFERIOR */
+.footer-nav{flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #1e3a8a;padding:15px 24px;background:#0a192fee}
+.nav{border:1px solid var(--cyan);color:var(--cyan);background:transparent;border-radius:22px;padding:8px 17px;cursor:pointer;font-size:.9rem}
+.nav:hover:not(:disabled),.nav:focus-visible{background:var(--cyan);color:#0a192f}
+.nav:disabled{opacity:.3;cursor:not-allowed}
+.nav-center{border:1px solid var(--purple);color:var(--purple);background:#7e22ce25;border-radius:22px;padding:8px 17px;cursor:pointer;font-weight:600}
+.nav-center:hover{background:var(--purple);color:#fff}
+
+/* BARRA DE HERRAMIENTAS MÁS GRANDE */
+.tools-wrapper{display:flex;align-items:center;justify-content:center;gap:16px;margin:18px auto 0;max-width:max-content;}
+.tools-avatar{width:42px;height:42px;object-fit:contain;border-radius:50%;border:1px solid var(--cyan);background:#ffffff;padding:2px;}
+.tools{display:flex;justify-content:center;gap:10px;background:#ffffff;padding:10px 18px;border:1px solid #cbd5e1;border-radius:32px;box-shadow:0 6px 16px rgba(0,0,0,0.15);}
+.tool{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:20px;padding:9px 15px;cursor:pointer;font-size:.85rem;font-weight:600}
+.tool:hover{background:#e2e8f0}
+.tool:focus-visible,.nav:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.author{text-align:center;color:var(--cyan);font-weight:700;margin-top:28px}
+.topic-header{text-align:center;color:var(--cyan);font-weight:700;letter-spacing:1.5px;margin-bottom:8px;font-size:1.1rem}
+
+/* TARJETA ANTIBLOQUEO PARA YOUTUBE */
+.video-card-fallback{background:#0f172a;border:1px solid var(--cyan);border-radius:12px;padding:20px;text-align:center;margin:18px 0}
+.video-card-fallback img{max-width:100%;height:auto;border-radius:8px;margin-bottom:12px}
+.btn-youtube{display:inline-block;background:#ff0000;color:#fff;text-decoration:none;padding:10px 20px;border-radius:20px;font-weight:700;margin-top:10px}
+.btn-youtube:hover{background:#cc0000}
+
+.marquee-container{margin-top:24px;padding:12px;background:#0f172a;border:1px dashed #38bdf866;border-radius:10px;text-align:center}
+.marquee-container marquee{color:#38bdf8;font-weight:700;font-size:.95rem}
+.mantra{text-align:center;font-style:italic;color:var(--purple);margin-top:15px;font-weight:600}
+@media(max-width:700px){
+ .content{padding:20px}.two{grid-template-columns:1fr}.divider{display:none}
+ h1{font-size:1.65rem}h2{font-size:1.35rem}.magazine{height:900px}.tools-wrapper{flex-direction:column}
+ table{font-size:.8rem;display:block;overflow-x:auto}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{
+ body{background:#fff;color:#111}.site{padding:0}.magazine{box-shadow:none;border:0;height:auto;background:#fff;color:#111}.tools-wrapper,.footer-nav{display:none}
+ .content{padding:20px;overflow:visible}.header{color:#111}h1,h2,h3,.brand,.pagecount{color:#111}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido principal</a>
+<div class="external-ticker" id="externalTicker">Revista</div>
+<div class="site">
+<main class="magazine" aria-label="Revista digital educativa">
+<header class="header">
+<div class="brand-container">
+  <img src="joven.gif" alt="Joven" class="header-avatar" onerror="this.style.display='none'">
+  <div class="brand-text-box">
+    <div class="brand">EDUCA SIN BARRERAS · REVISTA DIGITAL</div>
+    <div class="header-date">Fecha actual: 26 de agosto de 2026</div>
+  </div>
+</div>
+<div id="pagecount" class="pagecount" aria-live="polite">Página 1 de 16</div>
+</header>
+<section id="contenido" class="content" tabindex="-1"></section>
+<footer class="footer-nav" aria-label="Navegación de la revista">
+<button id="prev" class="nav" type="button">‹ Anterior</button>
+<button id="gotoContents" class="nav-center" type="button">Ir a Contenidos</button>
+<button id="next" class="nav" type="button">Siguiente ›</button>
+</footer>
+</main>
+<div class="tools-wrapper" aria-label="Herramientas de accesibilidad">
+<img src="boton.png" alt="Botón decorativo" class="tools-avatar" onerror="this.style.display='none'">
+<div class="tools">
+<button class="tool" id="zoomIn" type="button" title="Aumentar tamaño del texto">A+</button>
+<button class="tool" id="zoomOut" type="button" title="Disminuir tamaño del texto">A−</button>
+<button class="tool" id="zoomReset" type="button" title="Restablecer tamaño">A=</button>
+<button class="tool" id="read" type="button">🔊 Leer</button>
+<button class="tool" id="stop" type="button">■ Detener</button>
+<button class="tool" id="music" type="button">♫ Música</button>
+</div>
+</div>
+</div>
+<audio id="clickAudio" preload="auto"><source src="click.wav" type="audio/wav"></audio><audio id="bgAudio" loop preload="none"><source src="music.mp3" type="audio/mpeg"></audio>
+
+<script>
+const tickerWords = ["Revista", "Necesidades", "Educativas", "Educa", "Sin Barreras"];
+let tickerIndex = 0;
+setInterval(() => {
+  tickerIndex = (tickerIndex + 1) % tickerWords.length;
+  const el = document.getElementById('externalTicker');
+  if(el) el.textContent = tickerWords[tickerIndex];
+}, 3000);
+
+const img={
+  cover:'imagendeportada.png', 
+  editorial:'imagendisc.jpg', 
+  conceptos:'Imagenpágina3.svg', 
+  fundamentos:'Imagenpágina4.svg', 
+  apoyos:'imagenpágina6.svg', 
+  dua:'imagenpágina7.svg', 
+  casos:'imagenpágina8.svg', 
+  matriz:'matriz.svg', 
+  evaluacion:'imagenpagina11.svg', 
+  asistiva:'imagenpágina12.svg', 
+  reflexion:'imagenpágina13.svg', 
+  conclusion:'imagenpágina14.svg', 
+  closing:'reflexion.gif',
+  editorialGif:'editorial.gif'
+};
+
+const pages=[
+{title:"Portada",html:`<div class="topic-header">¨EL TEMA DE ESTA SEMANA¨</div>
+<h1>NECESIDADES EDUCATIVAS Y APOYOS EDUCATIVOS</h1>
+<p class="subtitle">Revista Digital Interactiva · Perspectivas desde la Psicología Educativa</p>
+<img class="cover-img" src="${img.cover}" alt="Ilustración Educa Sin Barreras">
+<div class="callout"><p><strong>Propósito:</strong> comprender las necesidades educativas, reconocer barreras para el aprendizaje y proponer apoyos educativos que favorezcan una participación equitativa.</p></div>
+<p>Esta revista presenta tres artículos académicos redactados a partir de investigación sobre necesidades educativas, adecuaciones curriculares, Diseño Universal para el Aprendizaje y estrategias de apoyo. El enfoque parte de la educación inclusiva y del reconocimiento de la diversidad del alumnado.</p>
+<div class="card meta"><b>Autor:</b><span>William Herrera Cerdas</span><b>Profesora:</b><span>Alejandra Brenes González</span><b>Curso:</b><span>Psicología Educativa</span><b>Universidad:</b><span>Universidad Castro Carazo</span><b>Año:</b><span>2026</span></div>`},
+{title:"Editorial",html:`<h2>Editorial — Educar sin barreras</h2><img class="gif-img" src="${img.editorial}" alt="Ilustración alusiva a la discapacidad y educación inclusiva">
+<p>La educación inclusiva invita a pasar de una enseñanza pensada para un estudiante promedio a una práctica capaz de reconocer diferentes formas de aprender, comunicarse y participar. Las necesidades educativas no deben abordarse únicamente desde el diagnóstico: también deben analizarse las barreras que genera el entorno, la metodología, la comunicación o la evaluación.</p>
+<p>En esta edición se reúnen tres artículos. El primero desarrolla los fundamentos psicopedagógicos y la conceptualización de las necesidades educativas; el segundo examina los apoyos educativos, las adecuaciones y el Diseño Universal para el Aprendizaje; y el tercero presenta casos y estrategias concretas para la práctica docente y la evaluación.</p>
+<p>El propósito es ofrecer una lectura clara, académica y aplicable al contexto educativo costarricense, promoviendo una mirada centrada en las posibilidades del estudiante y en la responsabilidad compartida de la comunidad educativa.</p>`},
+{title:"Índice",html:`<h2>Tabla de contenido</h2><img class="hero-img" src="${img.conceptos}" alt="Ilustración de conocimiento y aprendizaje">
+<ol class="contents">
+<li><button onclick="go(1)">1. Portada</button></li><li><button onclick="go(2)">2. Editorial</button></li><li><button onclick="go(3)">3. Tabla de contenido</button></li>
+<li><button onclick="go(4)">4. Artículo 1 · Fundamentos y concepto</button></li><li><button onclick="go(5)">5. Artículo 1 · Desarrollo y referencias</button></li>
+<li><button onclick="go(6)">6. Artículo 2 · Apoyos y adecuaciones</button></li><li><button onclick="go(7)">7. Artículo 2 · DUA y referencias</button></li>
+<li><button onclick="go(8)">8. Artículo 3 · Casos educativos</button></li><li><button onclick="go(9)">9. Artículo 3 · Apoyos para TDAH y discapacidad visual</button></li>
+<li><button onclick="go(10)">10. Artículo 3 · Matriz de apoyos educativos</button></li><li><button onclick="go(11)">11. Evaluación inclusiva</button></li>
+<li><button onclick="go(12)">12. Tecnología asistiva</button></li><li><button onclick="go(13)">13. Reflexión pedagógica</button></li>
+<li><button onclick="go(14)">14. Conclusiones</button></li><li><button onclick="go(15)">15. Referencias bibliográficas</button></li>
+<li><button onclick="go(16)">16. Cierre editorial</button></li></ol>`},
+{title:"Artículo 1 · Fundamentos",html:`<span class="article-tag">ARTÍCULO 1</span><h2>Necesidades educativas: fundamentos y comprensión integral</h2><img class="hero-img" src="${img.fundamentos}" alt="Ilustración sobre pensamiento y aprendizaje">
+<h3>Fundamentos psicopedagógicos</h3>
+<p>La Psicología Educativa permite comprender que el aprendizaje se construye mediante la interacción entre las características del estudiante, las mediaciones pedagógicas y el contexto. Desde la perspectiva sociocultural de Vygotsky, la interacción y el acompañamiento favorecen el desarrollo de capacidades que posteriormente pueden ejercerse con mayor autonomía.</p>
+<p>El concepto de Zona de Desarrollo Próximo permite comprender el valor de los apoyos temporales y ajustados. El docente puede ofrecer modelado, preguntas orientadoras, recursos visuales, ejemplos y retroalimentación; posteriormente, estos apoyos se retiran gradualmente cuando el estudiante adquiere independencia.</p>
+<h3>De la deficiencia a las barreras para el aprendizaje</h3>
+<p>Una mirada inclusiva evita reducir al estudiante a una condición. Las barreras pueden aparecer en la organización del aula, la comunicación, los materiales, las evaluaciones o las actitudes. Por ello, el análisis educativo debe identificar qué ajustes permiten participar y demostrar los aprendizajes.</p>
+<div class="callout"><p><strong>Idea central:</strong> el apoyo educativo debe responder a una necesidad identificada y favorecer la participación, el aprendizaje y la autonomía, sin convertir la diferencia en una razón para excluir.</p></div>`},
+{title:"Artículo 1 · Conceptos y referencias",html:`<span class="article-tag">ARTÍCULO 1 · CONTINUACIÓN</span><h2>Conceptualización y diversidad de necesidades educativas</h2>
+<div class="two"><div><h3>Necesidades asociadas a discapacidad</h3><p>Incluyen necesidades vinculadas con condiciones sensoriales, físicas, intelectuales o del neurodesarrollo que pueden requerir apoyos de acceso, comunicación, movilidad, materiales o mediación.</p><h3>Necesidades no asociadas a discapacidad</h3><p>Pueden comprender dificultades específicas del aprendizaje, TDAH, altas capacidades y otras situaciones que requieren respuestas pedagógicas individualizadas.</p></div><div class="divider"></div><div><h3>Principio de individualización</h3><p>La respuesta educativa no debe establecerse únicamente por una etiqueta diagnóstica. Debe partir de la valoración de las fortalezas, necesidades, contexto, barreras y apoyos que permitan al estudiante participar.</p><div class="callout"><p><strong>Importante:</strong> las adecuaciones no significan automáticamente disminuir las expectativas de aprendizaje; su propósito es proporcionar condiciones de acceso y participación.</p></div></div></div>
+<h3>Referencias del artículo</h3>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px;">
+  <div class="ref" style="flex:1;margin:0;">Vygotsky, L. S. (1978). <em>El desarrollo de los procesos psicológicos superiores</em>. Editorial Crítica.</div>
+  <img src="${img.editorialGif}" alt="Editorial GIF" style="width:120px;height:auto;border-radius:8px;">
+</div>
+<div class="ref">UNESCO. (2020). <em>Global Education Monitoring Report 2020: Inclusion and education</em>. UNESCO.</div>`},
+{title:"Artículo 2 · Apoyos",html:`<span class="article-tag">ARTÍCULO 2</span><h2>Apoyos educativos y adecuaciones curriculares para una educación inclusiva</h2><img class="hero-img" src="${img.apoyos}" alt="Ilustración relacionada con apoyos para la comunicación y la percepción">
+<p>Los apoyos educativos son recursos, estrategias, servicios y ajustes que facilitan el acceso, la participación y el aprendizaje. Pueden ser personales, materiales, tecnológicos, organizativos, metodológicos o evaluativos, según las necesidades identificadas.</p>
+<h3>Tipos de adecuación y apoyo</h3><div class="two"><div><h3>Acceso</h3><p>Modificaciones o recursos que permiten acceder al entorno, a la información o a la comunicación: macrotipo, Braille, lectores de pantalla, materiales accesibles, mobiliario y apoyos tecnológicos.</p></div><div class="divider"></div><div><h3>No significativas</h3><p>Ajustes en metodología, tiempos, organización, instrucciones o evaluación que mantienen los aprendizajes esenciales. Deben responder a la necesidad educativa y documentarse conforme a los procedimientos institucionales aplicables.</p></div></div>
+<div class="callout"><p><strong>Aplicación pedagógica:</strong> antes de modificar una actividad, el docente debe identificar la barrera, definir el apoyo, implementarlo y valorar si realmente mejora la participación y el aprendizaje.</p></div>`},
+{title:"Artículo 2 · DUA",html:`<span class="article-tag">ARTÍCULO 2 · CONTINUACIÓN</span><h2>Diseño Universal para el Aprendizaje: anticipar la diversidad</h2><img class="hero-img" src="${img.dua}" alt="Ilustración de aprendizaje">
+<p>El Diseño Universal para el Aprendizaje propone planificar desde el inicio considerando la variabilidad de los estudiantes. En lugar de esperar a que aparezca una barrera para adaptar la enseñanza, se ofrecen alternativas de participación, representación y acción o expresión.</p>
+<div class="card"><h3>Compromiso · el porqué</h3><p>Ofrecer opciones para captar el interés, mantener el esfuerzo y favorecer la autorregulación.</p></div>
+<div class="card"><h3>Representación · el qué</h3><p>Presentar la información mediante diferentes formatos y apoyos para facilitar la percepción y comprensión.</p></div>
+<div class="card"><h3>Acción y expresión · el cómo</h3><p>Permitir diferentes medios para interactuar, comunicar y demostrar lo aprendido.</p></div>
+<h3>Referencias del artículo</h3>
+<div class="ref">CAST. (2024). <em>Universal Design for Learning Guidelines version 3.0</em>. Center for Applied Special Technology.</div>
+<div class="ref">Ministerio de Educación Pública. (2022). <em>Líneas de acción para los servicios de apoyo educativo desde la Educación Especial</em>. MEP.</div>`},
+{title:"Artículo 3 · Casos",html:`<span class="article-tag">ARTÍCULO 3</span><h2>De la teoría a la práctica: casos y estrategias de apoyo educativo</h2><img class="gif-img" src="${img.casos}" alt="Estudiante escribiendo">
+<h3>Caso 1 · Estudiante con TDAH</h3><p>Un estudiante puede presentar dificultades para sostener la atención, organizar tareas, administrar el tiempo y regular respuestas impulsivas. Una respuesta pedagógica pertinente puede incluir instrucciones breves, segmentación de tareas, recordatorios visuales, ubicación estratégica, pausas planificadas y seguimiento de avances.</p>
+
+<div class="video-card-fallback">
+  <p><strong>Recurso de Video Educativo (YouTube)</strong></p>
+  <p class="small">Si el reproductor integrado presenta restricciones externas, haz clic en el botón para verlo directamente en YouTube:</p>
+  <a class="btn-youtube" href="https://www.youtube.com/watch?v=wFv-4Vexvmk" target="_blank" rel="noopener">Abrir vídeo en YouTube ↗</a>
+</div>
+
+<h3>Caso 2 · Estudiante con discapacidad visual</h3><p>La prioridad es garantizar acceso a la información y a la interacción. Pueden utilizarse materiales digitales accesibles, ampliación, lectores de pantalla, contraste adecuado, descripciones textuales y recursos táctiles cuando sean pertinentes.</p>
+<div class="callout"><p><strong>Clave docente:</strong> el apoyo se selecciona según la barrera concreta y se revisa con evidencia de su utilidad. No todos los estudiantes con una misma condición necesitan exactamente los mismos apoyos.</p></div>`},
+{title:"Artículo 3 · Apoyos concretos",html:`<span class="article-tag">ARTÍCULO 3 · CONTINUACIÓN</span><h2>Adecuaciones y apoyos: propuestas concretas</h2>
+<div class="two"><div><h3>TDAH</h3><ul><li>Segmentar proyectos en entregas parciales.</li><li>Combinar instrucciones orales y escritas.</li><li>Utilizar temporizadores o agendas visuales.</li><li>Permitir pausas activas planificadas.</li><li>Dar retroalimentación frecuente y específica.</li></ul></div><div class="divider"></div><div><h3>Discapacidad visual</h3><ul><li>Entregar documentos digitales accesibles.</li><li>Usar texto alternativo en imágenes.</li><li>Facilitar ampliación y contraste adecuados.</li><li>Evitar información exclusivamente visual.</li><li>Utilizar lector de pantalla cuando corresponda.</li></ul></div></div>
+<h3>Seguimiento</h3><p>La implementación debe acompañarse de observación y valoración. Si un apoyo no elimina la barrera o genera una nueva dificultad, debe ajustarse. La participación del estudiante y la coordinación con la familia y los servicios de apoyo fortalecen la toma de decisiones.</p>
+<div class="callout"><p><strong>Resultado esperado:</strong> mayor autonomía, acceso a los contenidos, participación activa y posibilidades reales de demostrar los aprendizajes.</p></div>`},
+{title:"Artículo 3 · Matriz",html:`<span class="article-tag">ARTÍCULO 3 · HERRAMIENTA</span><h2>Matriz de apoyos educativos</h2>
+<p>La siguiente matriz convierte el análisis en una herramienta práctica para la planificación docente.</p>
+<table><thead><tr><th>Necesidad/barrera</th><th>Apoyo propuesto</th><th>Aplicación</th><th>Evidencia de seguimiento</th></tr></thead>
+<tbody>
+<tr><td>Atención y organización</td><td>Agenda visual y tareas segmentadas</td><td>Inicio y cierre de cada actividad</td><td>Entrega de microtareas y autonomía</td></tr>
+<tr><td>Acceso visual</td><td>Documento accesible, ampliación y contraste</td><td>Materiales y evaluaciones</td><td>Acceso independiente a la información</td></tr>
+<tr><td>Comprensión de instrucciones</td><td>Instrucciones breves + ejemplo</td><td>Antes de cada actividad</td><td>Menor necesidad de repetición</td></tr>
+<tr><td>Demostración del aprendizaje</td><td>Opciones de respuesta</td><td>Según objetivo de aprendizaje</td><td>Calidad de la evidencia obtenida</td></tr>
+</tbody></table>
+<p class="small">La matriz debe adaptarse a la valoración educativa concreta; no sustituye los procedimientos institucionales ni la valoración profesional correspondiente.</p>`},
+{title:"Evaluación inclusiva",html:`<h2>Evaluación inclusiva y apoyos evaluativos</h2><img class="hero-img" src="${img.evaluacion}" alt="Estudiante con lentes">
+<p>Una evaluación inclusiva busca que el instrumento mida el aprendizaje esperado y no una barrera ajena al objetivo. Por ello, pueden ser pertinentes ajustes de formato, organización, tiempo, apoyos de acceso o modalidad de respuesta, siempre que sean coherentes con la necesidad identificada y con los procedimientos institucionales.</p>
+<div class="two"><div><h3>Antes</h3><ul><li>Identificar el objetivo de aprendizaje.</li><li>Detectar barreras previsibles.</li><li>Definir apoyos y condiciones.</li></ul></div><div class="divider"></div><div><h3>Durante</h3><ul><li>Aplicar el apoyo acordado.</li><li>Verificar comprensión de instrucciones.</li><li>Registrar observaciones pertinentes.</li></ul></div></div>
+<div class="callout"><p><strong>Principio:</strong> adaptar la forma de acceso o respuesta no debe confundirse con alterar el aprendizaje que se pretende valorar.</p></div>`},
+{title:"Tecnología asistiva",html:`<h2>Tecnología asistiva y accesibilidad digital</h2><img class="hero-img" src="${img.asistiva}" alt="Ilustración sobre tecnología y aprendizaje">
+<p>La tecnología asistiva puede ampliar las posibilidades de comunicación, acceso a información y producción académica. Entre los recursos se encuentran lectores de pantalla, ampliadores, teclados adaptados, sistemas de comunicación aumentativa y herramientas de conversión de texto a voz.</p>
+<h3>Accesibilidad en la propia revista</h3><ul><li>Texto ampliable mediante controles A+ y A−.</li><li>Lectura mediante síntesis de voz del navegador.</li><li>Texto alternativo en las imágenes.</li><li>Navegación mediante botones y teclado.</li><li>Diseño adaptable a pantallas pequeñas.</li><li>Enlace para saltar directamente al contenido.</li></ul>
+<div class="callout"><p><strong>Uso responsable:</strong> la tecnología complementa la mediación pedagógica. La selección del recurso debe responder a una necesidad real y evaluarse por su utilidad para la autonomía y la participación.</p></div>`},
+{title:"Reflexión",html:`<h2>Reflexión crítico-pedagógica</h2><img class="hero-img" src="${img.reflexion}" alt="Docente acompañando el aprendizaje" onerror="this.style.display='none'">
+<p>La verdadera inclusión implica abandonar la idea de que todos los estudiantes deben aprender exactamente de la misma manera. La diversidad no es una excepción que aparece después de planificar; forma parte de la realidad cotidiana del aula.</p>
+<p>Como futuros profesionales de la educación, reconocer una necesidad educativa supone asumir una responsabilidad pedagógica: observar las barreras, escuchar al estudiante, seleccionar apoyos pertinentes, valorar sus resultados y trabajar coordinadamente con la comunidad educativa.</p>
+<div class="callout"><p><strong>Pregunta para la práctica:</strong> ¿estoy diseñando una enseñanza que espera que todos se adapten al método, o estoy creando diferentes oportunidades para que todos puedan aprender y demostrar lo aprendido?</p></div>`},
+{title:"Conclusiones",html:`<h2>Conclusiones</h2><img class="hero-img" src="${img.conclusion}" alt="Inclusión y participación">
+<ol><li>Las necesidades educativas deben comprenderse desde la interacción entre las características del estudiante y las barreras del contexto.</li>
+<li>Los apoyos educativos permiten mejorar el acceso, la participación, el aprendizaje y la autonomía cuando se seleccionan con propósito y seguimiento.</li>
+<li>El DUA favorece una planificación preventiva que considera la variabilidad del alumnado desde el inicio.</li>
+<li>Las adecuaciones y apoyos evaluativos deben guardar relación con los objetivos de aprendizaje y con la necesidad identificada.</li>
+<li>La tecnología asistiva puede ampliar las oportunidades de participación, pero requiere mediación pedagógica y uso responsable.</li></ol>
+<div class="callout"><p><strong>Cierre:</strong> una educación inclusiva no consiste en bajar expectativas, sino en eliminar barreras y ofrecer condiciones para que cada estudiante pueda desarrollar su potencial.</p></div>`},
+{title:"Referencias",html:`<h2>Referencias bibliográficas</h2>
+<div class="ref">Asamblea Legislativa de la República de Costa Rica. (1996). <em>Ley N.° 7600: Igualdad de oportunidades para las personas con discapacidad</em>. La Gaceta.</div>
+<div class="ref">Asamblea Legislativa de la República de Costa Rica. (2008). <em>Ley N.° 8661: Convención sobre los Derechos de las Personas con Discapacidad</em>. La Gaceta.</div>
+<div class="ref">CAST. (2024). <em>Universal Design for Learning Guidelines version 3.0</em>. Center for Applied Special Technology.</div>
+<div class="ref">Ministerio de Educación Pública. (2022). <em>Líneas de acción para los servicios de apoyo educativo desde la Educación Especial</em>. MEP.</div>
+<div class="ref">UNESCO. (2020). <em>Global Education Monitoring Report 2020: Inclusion and education</em>. UNESCO.</div>
+<div class="ref">Vygotsky, L. S. (1978). <em>El desarrollo de los procesos psicológicos superiores</em>. Editorial Crítica.</div>
+<p class="small" style="margin-top:14px;"><strong>Nota aclaratoria:</strong> Se empleó inteligencia artificial como herramienta de apoyo para la elaboración de imágenes y asistencia en pruebas de ejecución del sitio/proyecto.</p>
+<div class="marquee-container">
+<marquee scrollamount="5">La presente revista muestra un ejemplo de como todos los sitios digitales deberian contar con apoyos especiales, El editor aprovecha el espacio para extender un sincero agradecimiento a la profesora Alejandra Brenes González del curso Psicologia Educativa de la Universidad Castro Carazo, por todo el apoyo recibido durante dicho curso.</marquee>
+</div>
+<div class="mantra">"Incluir no es dejar entrar, es dar la bienvenida a construir juntos."</div>`},
+{title:"Cierre editorial",html:`<h2>Cierre — Una revista para educar con inclusión</h2><img class="gif-img" src="${img.closing}" alt="Ilustración sobre conocimiento">
+<p>Esta revista concluye con una idea esencial: las diferencias forman parte de la experiencia humana y, por tanto, también del aula. El compromiso profesional consiste en convertir esa diversidad en una oportunidad para mejorar la enseñanza.</p>
+<p>Identificar barreras, planificar apoyos, utilizar recursos accesibles y evaluar con justicia son acciones concretas que acercan el derecho a la educación a su realización cotidiana.</p>
+<div class="card"><h3>Datos de la publicación</h3><div class="meta"><b>Autor:</b><span>William Herrera Cerdas</span><b>Profesora:</b><span>Alejandra Brenes González</span><b>Tema:</b><span>Necesidades educativas y apoyos educativos</span><b>Formato:</b><span>Revista digital interactiva</span><b>Año:</b><span>2026</span></div></div>
+<p class="author">Gracias por leer · Educa sin Barreras</p>`}
+];
+
+let page=0, font=18; 
+const clickAudio=document.getElementById('clickAudio'); 
+function clickSound(){try{clickAudio.currentTime=0;clickAudio.volume=.18;clickAudio.play().catch(()=>{});}catch(e){}}
+
+const content=document.getElementById('contenido');
+const count=document.getElementById('pagecount');
+
+function render(){
+ content.innerHTML=pages[page].html;
+ count.textContent=`Página ${page+1} de ${pages.length} · ${pages[page].title}`;
+ document.getElementById('prev').disabled=page===0;
+ document.getElementById('next').disabled=page===pages.length-1;
+ content.scrollTop=0; 
+ content.focus({preventScroll:true});
+ speechSynthesis?.cancel();
+}
+
+function go(n){if(n>=1&&n<=pages.length){clickSound();page=n-1;render()}}
+window.go=go;
+
+document.getElementById('prev').onclick=()=>{clickSound();go(page)};
+document.getElementById('next').onclick=()=>{clickSound();go(page+2)};
+document.getElementById('gotoContents').onclick=()=>{clickSound();go(3)};
+
+document.getElementById('zoomIn').onclick=()=>{clickSound();font=Math.min(30,font+2);document.documentElement.style.setProperty('--base',font+'px')};
+document.getElementById('zoomOut').onclick=()=>{clickSound();font=Math.max(13,font-2);document.documentElement.style.setProperty('--base',font+'px')};
+document.getElementById('zoomReset').onclick=()=>{clickSound();font=18;document.documentElement.style.setProperty('--base','18px')};
+document.getElementById('read').onclick=()=>{clickSound();speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(content.innerText);u.lang='es-CR';u.rate=.92;speechSynthesis.speak(u)};
+document.getElementById('stop').onclick=()=>{clickSound();speechSynthesis.cancel()};
+
+const audio=document.getElementById('bgAudio');
+document.getElementById('music').onclick=async()=>{
+  clickSound();
+  if(audio.paused){
+    try{await audio.play();document.getElementById('music').textContent='♫ Pausar'}
+    catch(e){alert('El navegador bloqueó la reproducción. Presione nuevamente el botón Música.')}
+  }else{
+    audio.pause();document.getElementById('music').textContent='♫ Música';
+  }
+};
+
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(page);if(e.key==='ArrowRight')go(page+2)});
+render();
+</script>
+</body>
+</html>
