@@ -87,11 +87,22 @@ body::after{opacity:.45;filter:blur(.35px);transform:scale(1.08);animation-durat
 button{font:inherit}
 .skip{position:absolute;left:-9999px;top:8px;background:#000;color:#fff;padding:10px;z-index:9999}
 .skip:focus{left:8px}
-.site{min-height:100vh;padding:10px 12px 90px}
+
+/* CONTENEDOR GENERAL: ORGANIZA LA REVISTA Y EL PANEL AL LADO */
+.site{
+  min-height:100vh;
+  padding:10px 12px 90px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  max-width:1120px;
+  margin:0 auto;
+}
 
 /* MARCO Y RELLENO EN AZUL MARINO */
-.magazine{max-width:980px;height:860px;margin:auto;background:linear-gradient(145deg,#0a192f,#020617);
-border:2px solid #31558f;border-radius:18px;box-shadow:0 35px 70px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12),inset 12px 0 22px rgba(0,0,0,.22),inset -12px 0 22px rgba(0,0,0,.28);position:relative;overflow:hidden;display:flex;flex-direction:column;color:var(--text);transform:perspective(1800px) rotateX(.35deg)}
+.magazine{width:100%;max-width:980px;height:860px;background:linear-gradient(145deg,#0a192f,#020617);
+border:2px solid #31558f;border-radius:18px;box-shadow:0 35px 70px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.12),inset 12px 0 22px rgba(0,0,0,.22),inset -12px 0 22px rgba(0,0,0,.28);position:relative;overflow:hidden;display:flex;flex-direction:column;color:var(--text);transform:perspective(1800px) rotateX(.35deg);flex-shrink:0;}
 .magazine::before,.magazine::after{content:"";position:absolute;top:12px;bottom:12px;width:16px;pointer-events:none;z-index:4}
 .magazine::before{left:0;background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,.02),transparent);border-radius:16px 0 0 16px}
 .magazine::after{right:0;background:linear-gradient(270deg,rgba(0,0,0,.6),rgba(0,0,0,.12),transparent);border-radius:0 16px 16px 0}
@@ -151,8 +162,17 @@ th{color:var(--cyan);background:#0f172a}
 .nav-center{border:1px solid var(--purple);color:var(--purple);background:#7e22ce25;border-radius:22px;padding:8px 17px;cursor:pointer;font-weight:600}
 .nav-center:hover{background:var(--purple);color:#fff}
 
-/* BARRA DE HERRAMIENTAS MÁS GRANDE */
-.tools-wrapper{position:fixed;top:50%;right:22px;transform:translateY(-50%);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;max-width:calc(100vw - 30px)}
+/* PANEL DE HERRAMIENTas AL LADO (POSICIÓN FIJA EXTERNA / FLEXIBLE) */
+.tools-wrapper{
+  position:relative;
+  z-index:1000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-shrink:0;
+}
 .tools-avatar{width:42px;height:42px;object-fit:contain;border-radius:50%;border:1px solid var(--cyan);background:#ffffff;padding:2px;cursor:pointer;}
 .tools{display:flex;flex-direction:column;justify-content:center;gap:8px;background:rgba(255,255,255,.96);padding:8px 12px;border:1px solid #cbd5e1;border-radius:28px;box-shadow:0 12px 30px rgba(0,0,0,.35);backdrop-filter:blur(10px)}
 .tool{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:20px;padding:9px 15px;cursor:pointer;font-size:.85rem;font-weight:600}
@@ -170,15 +190,22 @@ th{color:var(--cyan);background:#0f172a}
 .marquee-container{margin-top:24px;padding:12px;background:#0f172a;border:1px dashed #38bdf866;border-radius:10px;text-align:center}
 .marquee-container marquee{color:#38bdf8;font-weight:700;font-size:.95rem}
 .mantra{text-align:center;font-style:italic;color:var(--purple);margin-top:15px;font-weight:600}
+
+@media(max-width:1200px){
+ .site{flex-direction:column;align-items:center;padding:10px 10px 90px}
+ .tools-wrapper{flex-direction:row;flex-wrap:wrap;justify-content:center;margin-top:10px}
+ .tools{flex-direction:row;flex-wrap:wrap;justify-content:center}
+}
+
 @media(max-width:700px){
- .tools-wrapper{right:8px}.tools-avatar{width:36px;height:36px}.tools{padding:6px}.tool{padding:7px 10px;font-size:.75rem}
+ .tools-avatar{width:36px;height:36px}.tools{padding:6px}.tool{padding:7px 10px;font-size:.75rem}
  .content{padding:20px}.two{grid-template-columns:1fr}.divider{display:none}
- h1{font-size:1.65rem}h2{font-size:1.35rem}.magazine{height:900px}.tools-wrapper{flex-direction:column}
+ h1{font-size:1.65rem}h2{font-size:1.35rem}.magazine{height:900px}
  table{font-size:.8rem;display:block;overflow-x:auto}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{
- body{background:#fff;color:#111}.site{padding:0}.magazine{box-shadow:none;border:0;height:auto;background:#fff;color:#111}.tools-wrapper,.footer-nav{display:none}
+ body{background:#fff;color:#111}.site{padding:0;display:block}.magazine{box-shadow:none;border:0;height:auto;background:#fff;color:#111}.tools-wrapper,.footer-nav{display:none}
  .content{padding:20px;overflow:visible}.header{color:#111}h1,h2,h3,.brand,.pagecount{color:#111}
 }
 </style>
